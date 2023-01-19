@@ -5,6 +5,7 @@ use Omnipay\Omnipay;
 use Silex\Application;
 
 require __DIR__.'/vendor/autoload.php';
+require __DIR__.'/helpers.php';
 
 // create basic Silex application
 $app = new Application();
@@ -171,6 +172,7 @@ $app->get('/gateways/{name}/purchase', function($name) use ($app) {
         'method' => 'purchase',
         'params' => $params,
         'card' => $card->getParameters(),
+        'fields' => get_fields($gateway, $gateway->purchase()),
     ));
 });
 

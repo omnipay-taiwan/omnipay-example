@@ -25,6 +25,17 @@ $response = $gateway->{{ method }}($params);</pre>
 
         {% endfor %}
 
+        {% for field in fields %}
+
+            <div class="control-group">
+                <label class="control-label" for="params_{{field.name}}">{{ field.name }}</label>
+                <div class="controls">
+                    <input type="text" name="params[{{field.name}}]" id="params_{{field.name}}" value="{{params[field.name]|default}}" />
+                </div>
+            </div>
+
+        {% endfor %}
+
         {% if card is defined %}
 
             <h2>Credit Card Parameters</h2>
